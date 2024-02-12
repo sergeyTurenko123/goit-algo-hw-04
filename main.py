@@ -49,7 +49,7 @@ def show_phone(args):
         print(f"{name},{lists[name]}")
     else:
         print("Contact does not exist. Will you write it down?")
-    return show_phone(args)
+    return show_phone()
 
 def show_all():
     with open('name_phone.txt', "r", encoding = "utf-8") as fh:
