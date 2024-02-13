@@ -38,7 +38,7 @@ def change_contact(args):
     return "Contact updated."
 
 def show_phone(args):
-    name = args
+    [name] = args
     with open('name_phone.txt', "r", encoding = "utf-8") as fh:
         lines = fh.readlines()
     lists = {}
@@ -49,7 +49,7 @@ def show_phone(args):
         print(f"{name},{lists[name]}")
     else:
         print("Contact does not exist. Will you write it down?")
-    return show_phone()
+    
 
 def show_all():
     with open('name_phone.txt', "r", encoding = "utf-8") as fh:
