@@ -12,7 +12,7 @@ def add_contact(args):
         list_line = line.split(",")
         lists.update({list_line[0]: list_line[1].strip()})
     if name in lists:
-        print("Contact exists. Re-record?")
+        return("Contact exists. Re-record?")
     else:
         lists[name] = phone
         with open("name_phone.txt","w", encoding = "utf-8") as fh:
@@ -47,9 +47,9 @@ def show_phone(args):
         list_line = line.split(",")
         lists.update({list_line[0]: list_line[1].strip()})
     if name in lists:
-        print(f"{name},{lists[name]}")
+        return(f"{name},{lists[name]}")
     else:
-        print("Contact does not exist. Will you write it down?")
+        return("Contact does not exist. Will you write it down?")
     
 
 def show_all():
