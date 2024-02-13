@@ -10,11 +10,22 @@ def add_contact(args):
     lists = {}
     for line in lines:
         list_line = line.split(",")
-        lists.update({list_line[0]: list_line[1].strip()})
+        pattern = r"[\s\D]"
+        repl = r""
+        match = re.sub(pattern, repl, phone)
+        if len(match) == 10:
+            match = f"+38{match}"
+        elif len(match) == 11:
+            match = f"+3{match}"
+        elif len(match) == 12:
+            match = f"+{match}"
+        else:
+            match = match
+        lists.update({list_line[0]: match.strip()})
     if name in lists:
         return("Contact exists. Re-record?")
     else:
-        lists[name] = phone
+        lists[name] = match
         with open("name_phone.txt","w", encoding = "utf-8") as fh:
             for key, value in lists.items():
                 fh.write(f'{key},{value}\n')
@@ -27,9 +38,20 @@ def change_contact(args):
     lists = {}
     for line in lines:
         list_line = line.split(",")
-        lists.update({list_line[0]: list_line[1].strip()})
+        pattern = r"[\s\D]"
+        repl = r""
+        match = re.sub(pattern, repl, phone)
+        if len(match) == 10:
+            match = f"+38{match}"
+        elif len(match) == 11:
+            match = f"+3{match}"
+        elif len(match) == 12:
+            match = f"+{match}"
+        else:
+            match = match
+        lists.update({list_line[0]: match.strip()})
     if name in lists:
-        lists[name] = phone
+        lists[name] = match
         with open("name_phone.txt","w", encoding = "utf-8") as fh:
             for key, value in lists.items():
                 fh.write(f'{key},{value}\n')
@@ -45,20 +67,42 @@ def show_phone(args):
     lists = {}
     for line in lines:
         list_line = line.split(",")
-        lists.update({list_line[0]: list_line[1].strip()})
+        pattern = r"[\s\D]"
+        repl = r""
+        match = re.sub(pattern, repl, list_line[1])
+        if len(match) == 10:
+            match = f"+38{match}"
+        elif len(match) == 11:
+            match = f"+3{match}"
+        elif len(match) == 12:
+            match = f"+{match}"
+        else:
+            match = match
+        lists.update({list_line[0]: match.strip()})
     if name in lists:
         return(f"{name},{lists[name]}")
     else:
         return("Contact does not exist. Will you write it down?")
     
-
+import re
 def show_all():
     with open('name_phone.txt', "r", encoding = "utf-8") as fh:
         lines = fh.readlines()
     lists = {}
     for line in lines:
         list_line = line.split(",")
-        lists.update({list_line[0]: list_line[1].strip()})
+        pattern = r"[\s\D]"
+        repl = r""
+        match = re.sub(pattern, repl, list_line[1])
+        if len(match) == 10:
+            match = f"+38{match}"
+        elif len(match) == 11:
+            match = f"+3{match}"
+        elif len(match) == 12:
+            match = f"+{match}"
+        else:
+            match = match
+        lists.update({list_line[0]: match.strip()})
     return lists
 
 def main():
