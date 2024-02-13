@@ -18,7 +18,7 @@ def add_contact(args):
         with open("name_phone.txt","w", encoding = "utf-8") as fh:
             for key, value in lists.items():
                 fh.write(f'{key},{value}\n')
-    return "Contact added."
+        return "Contact added."
 
 def change_contact(args):
     name, phone = args
@@ -33,9 +33,10 @@ def change_contact(args):
         with open("name_phone.txt","w", encoding = "utf-8") as fh:
             for key, value in lists.items():
                 fh.write(f'{key},{value}\n')
+        return "Contact updated."
     else:
         print("Contact does not exist. Will you write it down?")
-    return "Contact updated."
+    
 
 def show_phone(args):
     [name] = args
